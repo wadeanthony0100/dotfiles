@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
   export ZSH=/home/wade/.oh-my-zsh
-  export EDITOR=/usr/bin/vim
+ # export EDITOR=/usr/bin/vim
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -53,7 +53,7 @@ plugins=(git, svn, django)
 
 # User configuration
 
-  export PATH="/home/wade/.tmuxifier/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export PATH="/home/wade/.tmuxifier/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -62,7 +62,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+   export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -82,7 +82,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-
 alias -g nitron=wam9729@nitron.se.rit.edu
 alias ga='git add'
 alias gc='git commit'
@@ -90,5 +89,20 @@ alias gp='git push'
 alias gs='git status'
 alias cd..='cd ..'
 alias sshRichland='ssh -p 2222 richboro@richlandborough.org'
-
+alias python3=/usr/bin/python3.4
+alias rc='javac -cp /opt/robocode/libs/robocode.jar'
+alias sshRichlandDroplet='ssh wade@45.55.210.72'
+alias tload='tmuxifier load-window'
+alias dev-richland='cd ~/Development/richland-flask;tmux'
+alias extract='dtrx'
+alias tree='tree -I node_modules'
+alias energia='~/Downloads/energia-0101E0017-linux64/energia-0101E0017/energia &'
+if [[ -r /usr/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+      source /usr/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh
+fi
+#eval "$(tmuxifier init -)"
+#fortune | cowsay
 eval "$(tmuxifier init -)"
+
+export NVM_DIR="/home/wade/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
