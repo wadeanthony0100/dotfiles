@@ -1,3 +1,4 @@
+" Begin Vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -10,7 +11,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'kien/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -27,8 +30,11 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" End Vundle
 let $PYTHONPATH='/usr/lib/python3.5/site-packages'
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 set laststatus=2
+set pastetoggle=<F12>
 syntax on
 colorscheme onedark
 filetype plugin indent on

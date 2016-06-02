@@ -53,7 +53,7 @@ plugins=(git, svn, django)
 
 # User configuration
 
-export PATH="/home/wade/.tmuxifier/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export PATH="/home/wade/.tmuxifier/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/wade/.gem/ruby/2.3.0/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -85,8 +85,11 @@ source $ZSH/oh-my-zsh.sh
 alias -g nitron=wam9729@nitron.se.rit.edu
 alias ga='git add'
 alias gc='git commit'
+alias gco='git checkout'
 alias gp='git push'
 alias gs='git status'
+alias gd='git diff'
+alias gpom='git push origin master'
 alias cd..='cd ..'
 alias sshRichland='ssh -p 2222 richboro@richlandborough.org'
 alias python3=/usr/bin/python3.4
@@ -95,14 +98,19 @@ alias sshRichlandDroplet='ssh wade@45.55.210.72'
 alias tload='tmuxifier load-window'
 alias dev-richland='cd ~/Development/richland-flask;tmux'
 alias extract='dtrx'
-alias tree='tree -I node_modules'
+alias t='tree -I node_modules'
+alias theHub=ncdc
+alias copy='xclip -i'
 alias energia='~/Downloads/energia-0101E0017-linux64/energia-0101E0017/energia &'
+# alias vim=nvim
 if [[ -r /usr/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
       source /usr/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
 #eval "$(tmuxifier init -)"
 #fortune | cowsay
+eval $(thefuck --alias) 
 eval "$(tmuxifier init -)"
-
-export NVM_DIR="/home/wade/.nvm"
+export TERM='xterm-256color'
+export NVM_DIR='/home/wade/.nvm'
+export PATH=/home/wade/.gem/ruby/2.3.0/bin/:$PATH
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
