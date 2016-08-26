@@ -1,12 +1,12 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/wade/.oh-my-zsh
+  export ZSH=/Users/wmauger/.oh-my-zsh
  # export EDITOR=/usr/bin/vim
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
-DEFAULT_USER="wade"
+DEFAULT_USER="wmauger"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -53,7 +53,7 @@ plugins=(git, svn, django)
 
 # User configuration
 
-export PATH="/home/wade/.tmuxifier/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/wade/.gem/ruby/2.3.0/bin"
+# export PATH="/Users/wmauger/.tmuxifier/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/wade/.gem/ruby/2.3.0/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -73,6 +73,18 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+NPM_PACKAGES="${HOME}/.npm-packages"
+
+PATH="$NPM_PACKAGES/bin:$PATH"
+
+# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+export GOPATH=$HOME/golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -90,10 +102,9 @@ alias gp='git push'
 alias gs='git status'
 alias gd='git diff'
 alias gpom='git push origin master'
+alias subgpom='git push origin HEAD:master'
 alias cd..='cd ..'
 alias sshRichland='ssh -p 2222 richboro@richlandborough.org'
-alias python3=/usr/bin/python3.4
-alias rc='javac -cp /opt/robocode/libs/robocode.jar'
 alias sshRichlandDroplet='ssh wade@45.55.210.72'
 alias tload='tmuxifier load-window'
 alias dev-richland='cd ~/Development/richland-flask;tmux'
@@ -102,15 +113,41 @@ alias t='tree -I node_modules'
 alias theHub=ncdc
 alias copy='xclip -i'
 alias energia='~/Downloads/energia-0101E0017-linux64/energia-0101E0017/energia &'
-# alias vim=nvim
+alias openAndroid='open platforms/android/build.gradle'
+alias openIos='open platforms/ios/HelloCordova.xcodeproj'
+alias pythonServer='python -m SimpleHTTPServer'
+alias devd='/usr/local/bin/devd'
+alias parrot='/usr/local/bin/parrot'
+alias wq='sl'
+alias :wq='sl'
+
+cdallFunction(){
+  Ctrl-b
+  :setw synchronize-panes
+  cd $1
+  :setw synchronize-panes
+}
+
+alias cdall=cdallFunction
+
 if [[ -r /usr/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
       source /usr/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
-#eval "$(tmuxifier init -)"
-#fortune | cowsay
-eval $(thefuck --alias) 
 eval "$(tmuxifier init -)"
+#fortune | cowsay
+
+function slay () {
+    kill -9 $(ps aux | grep $1 | awk '{print $2}')
+}
+
+eval $(thefuck --alias) 
 export TERM='xterm-256color'
-export NVM_DIR='/home/wade/.nvm'
-export PATH=/home/wade/.gem/ruby/2.3.0/bin/:$PATH
+
+export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home"
+export JAVA_HOME;
+
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="/usr/local/sbin:$PATH"

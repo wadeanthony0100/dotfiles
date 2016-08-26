@@ -14,6 +14,8 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'kien/ctrlp.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'dart-lang/dart-vim-plugin'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -31,13 +33,19 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " End Vundle
+
+" jj and kk are Esc
+inoremap jj <Esc>
+inoremap kk <Esc>
+
 let $PYTHONPATH='/usr/lib/python3.5/site-packages'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set laststatus=2
-set pastetoggle=<F12>
+set pastetoggle=<F2>
 syntax on
 colorscheme onedark
 filetype plugin indent on
+map <F7> mzgg=G`z
 " show existing tab with 4 spaces width
 set tabstop=2
 " when indenting with '>', use 4 spaces width
@@ -50,3 +58,4 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
